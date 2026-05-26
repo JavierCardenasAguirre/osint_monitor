@@ -1,0 +1,18 @@
+// This file exists only to satisfy the platform build tooling.
+// The application uses Supabase directly - NOT Prisma.
+
+generator client {
+    provider = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+    output = "/home/ubuntu/osint_monitor/nextjs_space/node_modules/.prisma/client"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model PlaceholderDoNotUse {
+  id Int @id @default(autoincrement())
+  @@map("_prisma_placeholder")
+}
