@@ -8,7 +8,7 @@ import Header from './header';
 import Filtros from './filtros';
 import NewsGrid from './news-grid';
 import OsintMap from './osint-map';
-import ChartView from './-chart';
+import ChartView from './radar-chart';
 import TimelineView from './timeline-view';
 import AddNoticiaModal from './add-noticia-modal';
 import FbImportModal from './fb-import-modal';
