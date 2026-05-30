@@ -146,7 +146,7 @@ export default function Dashboard() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="font-display text-2xl font-bold tracking-tight">
-              Panel de <span className="text-primary">Monitoreo</span>
+              Panel de <span className="text-primary">Monitoreo Noticias</span>
             </h1>
             <p className="text-sm text-muted-foreground mt-0.5">
               Inteligencia de fuentes abiertas para Córdoba y Antioquia
