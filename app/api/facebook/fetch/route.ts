@@ -6,7 +6,7 @@ import { clasificarTipologia, coordenadasMunicipios, normalizarMunicipio } from 
 
 const FB_GROUPS = [
   { value: 'ORGANIS', label: 'ORGANIS', depto: 'Cordoba' },
-  { value: 'RADAR CARIBE', label: 'RADAR CARIBE', depto: 'Cordoba' },
+  { value: 'RADAR CARIBE', label: ' CARIBE', depto: 'Cordoba' },
   { value: 'JA-NOTICIAS', label: 'JA-NOTICIAS', depto: 'Cordoba' },
   { value: 'GQ-NOTICIAS', label: 'GQ-NOTICIAS', depto: 'Cordoba' },
 ];

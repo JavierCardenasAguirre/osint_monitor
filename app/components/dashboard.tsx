@@ -8,7 +8,7 @@ import Header from './header';
 import Filtros from './filtros';
 import NewsGrid from './news-grid';
 import OsintMap from './osint-map';
-import RadarChartView from './radar-chart';
+import ChartView from './-chart';
 import TimelineView from './timeline-view';
 import AddNoticiaModal from './add-noticia-modal';
 import FbImportModal from './fb-import-modal';
@@ -189,7 +189,7 @@ export default function Dashboard() {
               onRefresh={refresh}
               loading={loading}
             />
-            <RadarChartView data={tipologiaCounts} />
+            <ChartView data={tipologiaCounts} />
             <TimelineView timeline={timeline} />
           </div>
 
