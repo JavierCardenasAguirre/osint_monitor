@@ -224,7 +224,7 @@ export default function OsintMap({ noticias }: OsintMapProps) {
       try {
         if (map.getLayer(lid)) map.removeLayer(lid);
         if (map.getSource(lid)) map.removeSource(lid);
-      } catch (e) {}
+      } catch (e) { }
     }
     linesLayerIds.current = [];
 
@@ -356,9 +356,9 @@ export default function OsintMap({ noticias }: OsintMapProps) {
             type: 'line',
             source: srcId,
             paint: {
-              'line-color': color,
-              'line-width': 1,
-              'line-opacity': 0.3,
+              'line-color': '#ff0000', // <--- Fuerza el color a rojo
+              'line-width': 1.5,      // Opcional: puedes aumentar el grosor a 1.5 si quieres que se vean más
+              'line-opacity': 0.8,    // Opcional: puedes aumentar la opacidad para que resalten más
               'line-dasharray': [2, 4],
             },
           });

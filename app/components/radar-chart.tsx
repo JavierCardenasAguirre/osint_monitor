@@ -49,7 +49,7 @@ export default function RadarChartView({ data }: RadarChartViewProps) {
         ) : (
           <ResponsiveContainer width="100%" height="100%">
             <RadarChart data={sortedData} cx="50%" cy="50%" outerRadius="65%">
-              <PolarGrid stroke="hsl(var(--border))" />
+              <PolarGrid stroke="#ff0000" />
               <PolarAngleAxis
                 dataKey="tipologia"
                 tick={{ fontSize: 9, fill: 'hsl(var(--muted-foreground))' }}
