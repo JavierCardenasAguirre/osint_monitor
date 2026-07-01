@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
         const parsed = await parseFeed(feed.url);
         if (!parsed?.items?.length) continue;
 
-        for (const item of parsed.items.slice(0, 30)) {
+        for (const item of parsed.items.slice(0, 60)) {
           const titulo = (item.title ?? '').trim();
           const itemUrl = (item.link ?? '').trim();
 
