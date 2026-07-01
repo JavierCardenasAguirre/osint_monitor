@@ -153,18 +153,18 @@ export default function OsintMap({ noticias }: OsintMapProps) {
                 style: {
                     version: 8,
                     sources: {
-                        'carto-voyager': {
+                        'carto-light': {
                             type: 'raster',
-                            tiles: ['https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png'],
+                            tiles: ['https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png'],
                             tileSize: 256,
                             attribution: '\u00a9 CARTO \u00a9 OSM',
                         },
                     },
                     layers: [
                         {
-                            id: 'carto-voyager-layer',
+                            id: 'carto-light-layer',
                             type: 'raster',
-                            source: 'carto-voyager',
+                            source: 'carto-light',
                             minzoom: 0,
                             maxzoom: 19,
                         },
