@@ -18,7 +18,8 @@ const RSS_FEEDS = [
   { url: 'https://www.eltiempo.com/rss/tecnosfera_novedades-tecnologia.xml', fuente: 'El Tiempo - Tecnología', depto: 'Bogota' },
   { url: 'https://www.eltiempo.com/rss/mundo_latinoamerica.xml', fuente: 'El Tiempo - Latinoamérica', depto: 'Bogota' },
   { url: 'https://www.eltiempo.com/rss/politica_gobierno.xml', fuente: 'El Tiempo - Gobierno', depto: 'Bogota' },
-  { url: 'https://news.google.com/rss/search?q=RCN+Radio+Colombia&hl=es&gl=CO&ceid=CO:es', fuente: 'Google News - RCN', depto: 'Bogota' }
+  { url: 'https://news.google.com/rss/search?q=RCN+Radio+Colombia&hl=es&gl=CO&ceid=CO:es', fuente: 'Google News - RCN', depto: 'Bogota' },
+  { url: 'https://rss-bridge.org/bridge01/?action=display&bridge=Facebook&context=Page&url=NoticiasRCN&format=Atom', fuente: 'RCN Noticias', depto: 'Bogota' }
 ];
 
 
