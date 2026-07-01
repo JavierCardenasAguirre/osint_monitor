@@ -93,7 +93,7 @@ export default function NewsCard({ noticia, index }: NewsCardProps) {
                                 ) : (
                                     <Rss className={`w-3 h-3 ${noticia.fuente.includes('El Tiempo')
                                             ? 'text-yellow-200'  // 👈 Color para El Tiempo
-                                            : 'text-orange-400'   // 👈 Color para otras fuentes RSS
+                                            : 'text-red-600'   // 👈 Color para otras fuentes RSS
                                         }`} />
                                 )}
                                 {noticia.fuente}
