@@ -9,6 +9,7 @@ const FB_GROUPS = [
   { value: 'RADAR CARIBE', label: 'RADAR CARIBE' },
   { value: 'JA-NOTICIAS', label: 'JA-NOTICIAS' },
   { value: 'GQ-NOTICIAS', label: 'GQ-NOTICIAS' },
+  { value: 'NP-NOTICIAS', label: 'NP-NOTICIAS' },
 ];
 
 interface FbImportModalProps {
