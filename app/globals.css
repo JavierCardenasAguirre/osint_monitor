@@ -47,7 +47,7 @@
     --chart-5: 43 74% 66%;
   }
 
-  .dark {
+  /*.dark {
     --background: 224 20% 6%;
     --foreground: 0 0% 95%;
     --card: 224 18% 10%;
@@ -76,7 +76,7 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
+}*/
 
 @layer base {
   html { scroll-behavior: smooth; }
