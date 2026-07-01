@@ -375,7 +375,7 @@ export default function OsintMap({ noticias }: OsintMapProps) {
   }, [groupedData, mapLoaded, maplibregl]);
 
   return (
-    <div className="bg-[#060910] rounded-xl border border-[#141c2e] overflow-hidden" style={{ boxShadow: '0 0 40px rgba(0,0,0,0.6), 0 0 80px rgba(59,130,246,0.04)' }}>
+    <div className="bg-[#f1f5f9] rounded-xl border border-[#e2e8f0] overflow-hidden" style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
       {/* Header */}
       <div className="px-4 py-3 border-b border-[#141c2e] flex items-center justify-between bg-gradient-to-r from-[#060910] to-[#0c1220]">
         <div className="flex items-center gap-2">
