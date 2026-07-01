@@ -92,7 +92,7 @@ export default function NewsCard({ noticia, index }: NewsCardProps) {
                                     <Facebook className="w-3 h-3 text-[#1877F2]" />
                                 ) : (
                                     <Rss className={`w-3 h-3 ${noticia.fuente.includes('El Tiempo')
-                                            ? 'text-emerald-500'  // 👈 Color para El Tiempo
+                                            ? 'text-yellow-200'  // 👈 Color para El Tiempo
                                             : 'text-orange-400'   // 👈 Color para otras fuentes RSS
                                         }`} />
                                 )}
