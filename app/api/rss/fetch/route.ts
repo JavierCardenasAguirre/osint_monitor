@@ -11,7 +11,15 @@ const RSS_FEEDS = [
   { url: 'https://www.chicanoticias.com/feed/', fuente: 'Chica Noticias', depto: 'Cordoba' },
   { url: 'https://www.elcolombiano.com/rss', fuente: 'El Colombiano', depto: 'Antioquia' },
   { url: 'https://h13n.com/feed/', fuente: 'H13N', depto: 'Cordoba' },
+  { url: 'https://www.eltiempo.com/rss/justicia.xml', fuente: 'El Tiempo - Justicia', depto: 'Bogota' },
+  { url: 'https://www.eltiempo.com/rss/justicia_conflicto-y-narcotrafico.xml', fuente: 'El Tiempo - Conflicto y Narcotráfico', depto: 'Bogota' },
+  { url: 'https://www.eltiempo.com/rss/justicia_delitos.xml', fuente: 'El Tiempo - Delitos', depto: 'Bogota' },
+  { url: 'https://www.eltiempo.com/rss/economia_sector-financiero.xml', fuente: 'El Tiempo - Sector Financiero', depto: 'Bogota' },
+  { url: 'https://www.eltiempo.com/rss/tecnosfera_novedades-tecnologia.xml', fuente: 'El Tiempo - Tecnología', depto: 'Bogota' },
+  { url: 'https://www.eltiempo.com/rss/mundo_latinoamerica.xml', fuente: 'El Tiempo - Latinoamérica', depto: 'Bogota' },
+  { url: 'https://www.eltiempo.com/rss/politica_gobierno.xml', fuente: 'El Tiempo - Gobierno', depto: 'Bogota' },
 ];
+
 
 const MUNICIPIOS_MAP: Record<string, { nombre: string; depto: string }> = {};
 for (const [name, data] of Object.entries(coordenadasMunicipios)) {
@@ -37,9 +45,24 @@ function detectarMunicipio(texto: string, defaultDepto: string): { municipio: st
   return { municipio: '', departamento: defaultDepto };
 }
 
-async function parseFeed(feedUrl: string): Promise<any> {
+/*async function parseFeed(feedUrl: string): Promise<any> {
   try {
     const parser = new Parser({ timeout: 15000 });
+    return await parser.parseURL(feedUrl);
+  } catch (err: any) {
+    console.error(`RSS parse error for ${feedUrl}:`, err?.message);
+    return null;
+  }
+}*/
+
+async function parseFeed(feedUrl: string): Promise<any> {
+  try {
+    const parser = new Parser({
+      timeout: 15000,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
+      }
+    });
     return await parser.parseURL(feedUrl);
   } catch (err: any) {
     console.error(`RSS parse error for ${feedUrl}:`, err?.message);
