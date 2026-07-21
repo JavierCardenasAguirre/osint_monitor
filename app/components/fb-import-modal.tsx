@@ -99,21 +99,23 @@ export default function FbImportModal({ open, onClose, onSuccess }: FbImportModa
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-      <div className="bg-card border border-border rounded-xl w-full max-w-2xl max-h-[85vh] overflow-y-auto shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+
+      <div className="relative bg-slate-700/60 border border-slate-600/30 rounded-xl w-full max-w-2xl max-h-[85vh] overflow-y-auto shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-border sticky top-0 bg-card z-10">
+        <div className="flex items-center justify-between p-4 border-b border-slate-600/30 sticky top-0 bg-slate-800/90 z-10">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-[#1877F2]/20 flex items-center justify-center">
               <Facebook className="w-4 h-4 text-[#1877F2]" />
             </div>
             <div>
-              <h2 className="font-display font-bold text-sm">Importar desde Facebook</h2>
-              <p className="text-xs text-muted-foreground">Pega el contenido de las publicaciones de los grupos</p>
+              <h2 className="font-display font-bold text-sm text-slate-100">Importar desde Facebook</h2>
+              <p className="text-xs text-slate-300">Pega el contenido de las publicaciones de los grupos</p>
             </div>
           </div>
-          <button onClick={onClose} className="p-1.5 hover:bg-muted rounded-lg transition-colors">
-            <X className="w-4 h-4" />
+          <button onClick={onClose} className="p-1.5 hover:bg-slate-700/40 rounded-lg transition-colors">
+            <X className="w-4 h-4 text-slate-200" />
           </button>
         </div>
 
@@ -125,7 +127,7 @@ export default function FbImportModal({ open, onClose, onSuccess }: FbImportModa
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 mode === 'bulk'
                   ? 'bg-[#1877F2] text-white'
-                  : 'bg-muted text-muted-foreground hover:text-foreground'
+                  : 'bg-slate-800/30 text-slate-300 hover:text-slate-100'
               }`}
             >
               Pegado masivo
@@ -135,7 +137,7 @@ export default function FbImportModal({ open, onClose, onSuccess }: FbImportModa
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 mode === 'individual'
                   ? 'bg-[#1877F2] text-white'
-                  : 'bg-muted text-muted-foreground hover:text-foreground'
+                  : 'bg-slate-800/30 text-slate-300 hover:text-slate-100'
               }`}
             >
               Individual
@@ -148,11 +150,11 @@ export default function FbImportModal({ open, onClose, onSuccess }: FbImportModa
           {mode === 'bulk' ? (
             <>
               <div className="space-y-2">
-                <label className="text-xs font-medium text-muted-foreground">Grupo de origen</label>
+                <label className="text-xs font-medium text-slate-300">Grupo de origen</label>
                 <select
                   value={bulkGroup}
                   onChange={e => setBulkGroup(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-muted border border-border text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="w-full px-3 py-2 rounded-lg bg-slate-800/40 border border-slate-600/30 text-sm focus:outline-none focus:ring-1 focus:ring-amber-300"
                 >
                   {FB_GROUPS.map(g => (
                     <option key={g.value} value={g.value}>{g.label}</option>
@@ -160,16 +162,16 @@ export default function FbImportModal({ open, onClose, onSuccess }: FbImportModa
                 </select>
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-medium text-muted-foreground">
+                <label className="text-xs font-medium text-slate-300">
                   Publicaciones (separa cada publicación con una línea en blanco o "---")
                 </label>
                 <textarea
                   value={bulkText}
                   onChange={e => setBulkText(e.target.value)}
                   placeholder={`Pega aquí el contenido de las publicaciones...\n\nSepara cada publicación con una línea en blanco.\n\nEjemplo:\nUna persona fue capturada en Montería por...\n\nSe reporta bloqueo en la vía Lorica-San Pelayo...`}
-                  className="w-full px-3 py-2 rounded-lg bg-muted border border-border text-sm focus:outline-none focus:ring-1 focus:ring-primary min-h-[250px] resize-y font-mono"
+                  className="w-full px-3 py-2 rounded-lg bg-slate-800/40 border border-slate-600/30 text-sm focus:outline-none focus:ring-1 focus:ring-amber-300 min-h-[250px] resize-y font-mono text-slate-100"
                 />
-                <p className="text-xs text-muted-foreground">
+                <p className="text-xs text-slate-300">
                   {bulkText.split(/\n{2,}|---+/).filter(t => t.trim().length >= 10).length} publicaciones detectadas
                 </p>
               </div>
@@ -177,22 +179,22 @@ export default function FbImportModal({ open, onClose, onSuccess }: FbImportModa
           ) : (
             <>
               {posts.map((post, idx) => (
-                <div key={post.id} className="p-3 rounded-lg border border-border bg-muted/30 space-y-2">
+                <div key={post.id} className="p-3 rounded-lg border border-slate-600/30 bg-slate-800/30 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-medium text-muted-foreground">Post #{idx + 1}</span>
+                    <span className="text-xs font-medium text-slate-300">Post #{idx + 1}</span>
                     {posts.length > 1 && (
                       <button
                         onClick={() => removePost(post.id)}
-                        className="p-1 hover:bg-destructive/20 rounded transition-colors"
+                        className="p-1 hover:bg-red-700/20 rounded transition-colors"
                       >
-                        <Trash2 className="w-3.5 h-3.5 text-destructive" />
+                        <Trash2 className="w-3.5 h-3.5 text-red-400" />
                       </button>
                     )}
                   </div>
                   <select
                     value={post.group}
                     onChange={e => updatePost(post.id, 'group', e.target.value)}
-                    className="w-full px-3 py-1.5 rounded-lg bg-muted border border-border text-xs focus:outline-none focus:ring-1 focus:ring-primary"
+                    className="w-full px-3 py-1.5 rounded-lg bg-slate-800/40 border border-slate-600/30 text-xs focus:outline-none focus:ring-1 focus:ring-amber-300 text-slate-100"
                   >
                     {FB_GROUPS.map(g => (
                       <option key={g.value} value={g.value}>{g.label}</option>
@@ -202,20 +204,20 @@ export default function FbImportModal({ open, onClose, onSuccess }: FbImportModa
                     value={post.text}
                     onChange={e => updatePost(post.id, 'text', e.target.value)}
                     placeholder="Contenido de la publicación..."
-                    className="w-full px-3 py-2 rounded-lg bg-muted border border-border text-sm focus:outline-none focus:ring-1 focus:ring-primary min-h-[80px] resize-y"
+                    className="w-full px-3 py-2 rounded-lg bg-slate-800/40 border border-slate-600/30 text-sm focus:outline-none focus:ring-1 focus:ring-amber-300 min-h-[80px] resize-y text-slate-100"
                   />
                   <input
                     type="text"
                     value={post.url}
                     onChange={e => updatePost(post.id, 'url', e.target.value)}
                     placeholder="URL del post (opcional)"
-                    className="w-full px-3 py-1.5 rounded-lg bg-muted border border-border text-xs focus:outline-none focus:ring-1 focus:ring-primary"
+                    className="w-full px-3 py-1.5 rounded-lg bg-slate-800/40 border border-slate-600/30 text-xs focus:outline-none focus:ring-1 focus:ring-amber-300 text-slate-100"
                   />
                 </div>
               ))}
               <button
                 onClick={addPost}
-                className="w-full py-2 rounded-lg border border-dashed border-border text-xs text-muted-foreground hover:text-foreground hover:border-primary/50 transition-colors flex items-center justify-center gap-1.5"
+                className="w-full py-2 rounded-lg border border-dashed border-slate-600/30 text-xs text-slate-300 hover:text-slate-100 hover:border-amber-300/50 transition-colors flex items-center justify-center gap-1.5"
               >
                 <Plus className="w-3.5 h-3.5" /> Agregar otra publicación
               </button>
@@ -224,14 +226,14 @@ export default function FbImportModal({ open, onClose, onSuccess }: FbImportModa
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-border sticky bottom-0 bg-card flex items-center justify-between">
-          <p className="text-xs text-muted-foreground">
+        <div className="p-4 border-t border-slate-600/30 sticky bottom-0 bg-slate-800/90 flex items-center justify-between">
+          <p className="text-xs text-slate-300">
             Las noticias serán clasificadas automáticamente
           </p>
           <div className="flex gap-2">
             <button
               onClick={onClose}
-              className="px-4 py-2 rounded-lg text-xs font-medium bg-muted hover:bg-muted/80 transition-colors"
+              className="px-4 py-2 rounded-lg text-xs font-medium bg-slate-800/40 text-slate-300 hover:bg-slate-700/40 transition-colors"
             >
               Cancelar
             </button>
