@@ -1,0 +1,23 @@
+// middleware.ts
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Rutas públicas permitidas
+  if (
+    pathname.startsWith('/login') ||
+    pathname.startsWith('/register') ||
+    pathname.startsWith('/api/auth') ||
+    pathname.startsWith('/_next') ||
+    pathname === '/favicon.ico'
+  ) {
+    return NextResponse.next();
+  }
+
+  // Nota: No podemos leer localStorage desde middleware. Si quieres
+  // autenticar server-side, implementa una cookie HttpOnly al hacer login.
+  // Por ahora devolvemos next() y la protección se realiza en cliente + API.
+  return NextResponse.next();
+}

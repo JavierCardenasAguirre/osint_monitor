@@ -36,7 +36,7 @@
     ".next/types/**/*.ts",
     ".build/types/**/*.ts",
     ".next/dev/types/**/*.ts"
-  ],
+, "middleware.ts.old", "middleware.ts.old"  ],
   "exclude": [
     "node_modules"
   ]

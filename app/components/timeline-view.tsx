@@ -30,14 +30,15 @@ export default function TimelineView({ timeline }: TimelineViewProps) {
   const days = Object.keys(timeline ?? {}).sort().reverse();
 
   return (
-    <div className="bg-card rounded-xl border border-border/50 overflow-hidden" style={{ boxShadow: 'var(--shadow-md)' }}>
-      <div className="px-4 py-3 border-b border-border/50 flex items-center gap-2">
-        <Clock className="w-4 h-4 text-primary" />
-        <h3 className="font-display font-semibold text-sm">Últimos 7 Días</h3>
+    <div className="bg-slate-700/60 rounded-xl border border-slate-600/30 overflow-hidden">
+      <div className="px-4 py-3 border-b border-slate-600/30 flex items-center gap-2">
+        <Clock className="w-4 h-4 text-amber-300" />
+        <h3 className="font-display font-semibold text-sm text-slate-100">Últimos 7 Días</h3>
       </div>
-      <div className="p-4 space-y-3 max-h-[400px] overflow-y-auto scrollbar-none">
+
+      <div className="p-4 space-y-3 max-h-[400px] overflow-y-auto">
         {(days ?? []).length === 0 ? (
-          <div className="text-center text-muted-foreground text-sm py-8">
+          <div className="text-center text-slate-300 text-sm py-8">
             Sin actividad reciente
           </div>
         ) : (
@@ -51,28 +52,28 @@ export default function TimelineView({ timeline }: TimelineViewProps) {
                 key={day}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: idx * 0.05 }}
+                transition={{ duration: 0.28, delay: idx * 0.045 }}
                 className="flex gap-3"
               >
                 {/* Day indicator */}
                 <div className="flex flex-col items-center">
-                  <div className={`w-3 h-3 rounded-full ${totalDay > 0 ? 'bg-primary' : 'bg-muted'}`} />
+                  <div className={`w-3 h-3 rounded-full ${totalDay > 0 ? 'bg-amber-300' : 'bg-slate-500'}`} />
                   {idx < (days ?? []).length - 1 && (
-                    <div className="w-px flex-1 bg-border/50 mt-1" />
+                    <div className="w-px flex-1 bg-slate-600/40 mt-1" />
                   )}
                 </div>
 
                 {/* Content */}
                 <div className="flex-1 pb-3">
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="text-sm font-medium">{formatDayLabel(day)}</span>
-                    <span className="text-xs font-mono text-muted-foreground flex items-center gap-1">
-                      <TrendingUp className="w-3 h-3" />
+                    <span className="text-sm font-medium text-slate-100">{formatDayLabel(day)}</span>
+                    <span className="text-xs font-mono text-slate-300 flex items-center gap-1">
+                      <TrendingUp className="w-3 h-3 text-slate-300" />
                       {totalDay}
                     </span>
                   </div>
                   {totalDay > 0 ? (
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap gap-2">
                       {(sorted ?? []).slice(0, 5).map(([tipo, count]: any) => (
                         <span
                           key={tipo}
@@ -84,7 +85,7 @@ export default function TimelineView({ timeline }: TimelineViewProps) {
                       ))}
                     </div>
                   ) : (
-                    <span className="text-xs text-muted-foreground">Sin actividad</span>
+                    <span className="text-xs text-slate-400">Sin actividad</span>
                   )}
                 </div>
               </motion.div>

@@ -1,13 +1,29 @@
-import { createClient } from '@supabase/supabase-js';
+// lib/supabase.ts
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL || '';
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY || process.env.SUPABASE_KEY || '';
+const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 
 if (!supabaseUrl || !supabaseKey) {
-  console.warn('[Supabase] SUPABASE_URL or SUPABASE_KEY not configured');
+  console.warn('[Supabase] NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_KEY not configured');
+}
+if (typeof window === 'undefined' && !serviceRoleKey) {
+  // Solo advertencia en el servidor si falta la service role key
+  console.warn('[Supabase] SUPABASE_SERVICE_ROLE_KEY not configured for server-side admin client');
 }
 
+// Cliente público para el navegador (anónimo)
 export const supabase = createClient(supabaseUrl, supabaseKey);
+
+// Cliente privado para uso en server-side (APIs, route handlers).
+// NOTA: en el cliente (navegador) esto será `null` para evitar que la key sea incluida en el bundle.
+export const supabaseAdmin: SupabaseClient | null =
+  typeof window === 'undefined' && serviceRoleKey
+    ? createClient(supabaseUrl, serviceRoleKey, {
+        auth: { persistSession: false, autoRefreshToken: false },
+      })
+    : null;
 
 export const TABLE = 'noticias_datacore';
 

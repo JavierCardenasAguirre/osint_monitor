@@ -39,34 +39,34 @@ export default function Filtros({ filtros, onFiltrosChange, onRefresh, loading }
   }, [filtros?.departamento]);
 
   return (
-    <div className="bg-card rounded-xl border border-border/50 p-4 space-y-4" style={{ boxShadow: 'var(--shadow-md)' }}>
+    <div className="bg-slate-700/60 rounded-xl border border-slate-600/30 p-4 space-y-4 shadow-sm">
       <div className="flex items-center gap-2 mb-1">
-        <Filter className="w-4 h-4 text-primary" />
-        <h3 className="font-display font-semibold text-sm">Filtros</h3>
+        <Filter className="w-4 h-4 text-amber-300" />
+        <h3 className="font-display font-semibold text-sm text-slate-100">Filtros</h3>
       </div>
 
       {/* Search */}
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-300" />
         <input
           type="text"
           placeholder="Buscar noticias..."
           value={filtros?.busqueda ?? ''}
           onChange={(e: any) => update({ busqueda: e?.target?.value ?? '' })}
-          className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-muted/50 border border-border/50 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+          className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-slate-800/60 border border-slate-600/30 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-300/30 transition-all"
         />
       </div>
 
       {/* Departamento tabs */}
-      <div className="flex gap-1 rounded-lg bg-muted/50 p-1">
+      <div className="flex gap-1 rounded-lg bg-slate-800/40 p-1">
         {['', 'Cordoba', 'Antioquia'].map((dep: string) => (
           <button
             key={dep}
             onClick={() => update({ departamento: dep, municipio: '' })}
             className={`flex-1 py-2 px-3 rounded-md text-xs font-medium transition-all ${
               filtros?.departamento === dep
-                ? 'bg-primary text-primary-foreground shadow-sm'
-                : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                ? 'bg-amber-300 text-slate-900 shadow-sm'
+                : 'text-slate-300 hover:text-slate-50 hover:bg-slate-700/40'
             }`}
           >
             {dep || 'Todos'}
@@ -77,15 +77,15 @@ export default function Filtros({ filtros, onFiltrosChange, onRefresh, loading }
       {/* Municipio */}
       {filtros?.departamento && (
         <div>
-          <label className="text-xs text-muted-foreground mb-1 block">Municipio</label>
+          <label className="text-xs text-slate-300 mb-1 block">Municipio</label>
           <select
             value={filtros?.municipio ?? ''}
             onChange={(e: any) => update({ municipio: e?.target?.value ?? '' })}
-            className="w-full py-2.5 px-3 rounded-lg bg-muted/50 border border-border/50 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 appearance-none"
+            className="w-full py-2.5 px-3 rounded-lg bg-slate-800/60 border border-slate-600/30 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-300/30 appearance-none"
           >
-            <option value="">Todos los municipios</option>
+            <option className="bg-slate-800 text-slate-100" value="">Todos los municipios</option>
             {(municipios ?? []).map((m: string) => (
-              <option key={m} value={m}>{m}</option>
+              <option key={m} className="bg-slate-800 text-slate-100" value={m}>{m}</option>
             ))}
           </select>
         </div>
@@ -94,25 +94,25 @@ export default function Filtros({ filtros, onFiltrosChange, onRefresh, loading }
       {/* Fechas */}
       <div className="grid grid-cols-2 gap-2">
         <div>
-          <label className="text-xs text-muted-foreground mb-1 flex items-center gap-1">
+          <label className="text-xs text-slate-300 mb-1 flex items-center gap-1">
             <Calendar className="w-3 h-3" /> Desde
           </label>
           <input
             type="date"
             value={filtros?.fechaInicio ?? ''}
             onChange={(e: any) => update({ fechaInicio: e?.target?.value ?? '' })}
-            className="w-full py-2 px-3 rounded-lg bg-muted/50 border border-border/50 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+            className="w-full py-2 px-3 rounded-lg bg-slate-800/60 border border-slate-600/30 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-300/30"
           />
         </div>
         <div>
-          <label className="text-xs text-muted-foreground mb-1 flex items-center gap-1">
+          <label className="text-xs text-slate-300 mb-1 flex items-center gap-1">
             <Calendar className="w-3 h-3" /> Hasta
           </label>
           <input
             type="date"
             value={filtros?.fechaFin ?? ''}
             onChange={(e: any) => update({ fechaFin: e?.target?.value ?? '' })}
-            className="w-full py-2 px-3 rounded-lg bg-muted/50 border border-border/50 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+            className="w-full py-2 px-3 rounded-lg bg-slate-800/60 border border-slate-600/30 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-300/30"
           />
         </div>
       </div>
@@ -121,7 +121,7 @@ export default function Filtros({ filtros, onFiltrosChange, onRefresh, loading }
       <div>
         <button
           onClick={() => setShowTipologias(!showTipologias)}
-          className="flex items-center justify-between w-full text-xs text-muted-foreground hover:text-foreground transition-colors"
+          className="flex items-center justify-between w-full text-xs text-slate-300 hover:text-slate-50 transition-colors"
         >
           <span>Tipologías ({(filtros?.tipologias ?? []).length > 0 ? (filtros?.tipologias ?? []).length : 'Todas'})</span>
           <ChevronDown className={`w-4 h-4 transition-transform ${showTipologias ? 'rotate-180' : ''}`} />
@@ -138,7 +138,7 @@ export default function Filtros({ filtros, onFiltrosChange, onRefresh, loading }
                   className={`px-2.5 py-1 rounded-full text-[10px] font-medium transition-all border ${
                     selected
                       ? 'text-white border-transparent'
-                      : 'border-border/50 text-muted-foreground hover:text-foreground'
+                      : 'border border-slate-600/30 text-slate-300 hover:text-slate-50'
                   }`}
                   style={selected ? { backgroundColor: color, borderColor: color } : {}}
                 >
@@ -151,7 +151,7 @@ export default function Filtros({ filtros, onFiltrosChange, onRefresh, loading }
         {(filtros?.tipologias ?? []).length > 0 && (
           <button
             onClick={() => update({ tipologias: [] })}
-            className="mt-2 text-xs text-primary hover:underline flex items-center gap-1"
+            className="mt-2 text-xs text-amber-300 hover:underline flex items-center gap-1"
           >
             <X className="w-3 h-3" /> Limpiar tipologías
           </button>
@@ -162,7 +162,7 @@ export default function Filtros({ filtros, onFiltrosChange, onRefresh, loading }
       <button
         onClick={() => onRefresh?.()}
         disabled={loading}
-        className="w-full py-2.5 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+        className="w-full py-2.5 rounded-lg bg-amber-300 text-slate-900 font-medium text-sm hover:bg-amber-200 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
       >
         <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
         Refrescar
